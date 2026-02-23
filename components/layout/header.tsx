@@ -13,7 +13,7 @@ interface HeaderProps {
 export default function Header({ onMobileMenuToggle, title }: HeaderProps) {
   const { theme, toggleTheme, user, notifications, markAllRead, markRead } = useAppStore();
   const [notifOpen, setNotifOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+
   const notifRef = useRef<HTMLDivElement>(null);
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
@@ -35,7 +35,7 @@ export default function Header({ onMobileMenuToggle, title }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-30 h-15 bg-(--bg-surface)/80 backdrop-blur-md border-b border-(--border-color) flex items-center px-4 gap-3 shadow-xs">
+    <header className="sticky top-0 z-30 h-15 bg-(--bg-surface)/85 backdrop-blur-xl border-b border-(--border-color) flex items-center px-4 gap-3 shadow-xs">
       {/* Mobile menu toggle */}
       <button
         onClick={onMobileMenuToggle}
@@ -55,7 +55,7 @@ export default function Header({ onMobileMenuToggle, title }: HeaderProps) {
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-(--text-muted) group-focus-within:text-[#1e3a8a] transition-colors" />
           <input
             placeholder="Search contacts, deals, tasks…"
-            className="w-full h-9 pl-9 pr-4 text-sm bg-(--bg-muted) border border-transparent rounded-xl placeholder:text-(--text-muted) text-(--text-primary) focus:outline-none focus:border-[#1e3a8a]/30 focus:bg-(--bg-surface) focus:shadow-sm transition-all duration-200"
+            className="w-full h-9 pl-9 pr-4 text-sm bg-(--bg-muted)/80 border border-transparent rounded-xl placeholder:text-(--text-muted) text-(--text-primary) focus:outline-none focus:border-[#1e3a8a]/30 focus:bg-(--bg-surface) focus:shadow-sm focus:ring-2 focus:ring-[#1e3a8a]/10 transition-all duration-200"
           />
           <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden group-focus-within:hidden sm:flex items-center gap-0.5 text-[10px] text-(--text-muted) font-mono bg-(--border-color) rounded px-1 py-0.5">
             ⌘K
@@ -92,7 +92,7 @@ export default function Header({ onMobileMenuToggle, title }: HeaderProps) {
           </button>
 
           {notifOpen && (
-            <div className="absolute right-0 top-11 w-85 bg-(--bg-surface) border border-(--border-color) rounded-2xl shadow-2xl animate-scale-in z-50 overflow-hidden">
+            <div className="absolute right-0 top-11 w-85 bg-(--bg-surface) border border-(--border-color) rounded-2xl shadow-2xl animate-scale-in z-50 overflow-hidden backdrop-blur-xl">
               {/* Panel header */}
               <div className="flex items-center justify-between px-4 py-3.5 border-b border-(--border-color)">
                 <div className="flex items-center gap-2">
@@ -119,7 +119,7 @@ export default function Header({ onMobileMenuToggle, title }: HeaderProps) {
                 {notifications.length === 0 ? (
                   <div className="py-12 flex flex-col items-center gap-2">
                     <Bell size={28} className="text-(--text-muted) opacity-40" />
-                    <p className="text-sm text-(--text-muted)">You're all caught up!</p>
+                    <p className="text-sm text-(--text-muted)">You&apos;re all caught up!</p>
                   </div>
                 ) : (
                   notifications.map((n) => (

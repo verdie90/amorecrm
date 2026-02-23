@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import {
-  Settings, User, Users, Shield, Globe, Palette, Bell,
+  Users, Shield, Globe, Palette, Bell,
   Key, Building, ChevronRight, Save, Plus, Trash2, Edit,
   Eye, EyeOff, Check
 } from "lucide-react";
@@ -47,13 +47,13 @@ export default function SettingsPage() {
     <div className="space-y-5">
       {/* Header */}
       <div>
-        <h1 className="font-display text-2xl font-bold text-(--text-primary)">Settings</h1>
+        <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Settings</h1>
         <p className="text-sm text-(--text-muted) mt-0.5">Manage your workspace preferences and configurations</p>
       </div>
 
       <div className="flex gap-5">
         {/* Sidebar menu */}
-        <div className="w-52 flex-shrink-0">
+        <div className="w-52 shrink-0">
           <nav className="space-y-0.5">
             {menuItems.map((item) => {
               const Icon = item.icon;

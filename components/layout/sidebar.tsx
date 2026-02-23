@@ -59,7 +59,7 @@ function NavLink({ href, icon: Icon, label, badge, active, collapsed, onClick }:
       )}
     >
       {active && !collapsed && (
-        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-[#38bdf8] rounded-r-full" />
+        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.75 h-5 bg-[#38bdf8] rounded-r-full shadow-[0_0_8px_rgba(56,189,248,0.4)]" />
       )}
       <Icon
         size={16}
@@ -126,8 +126,8 @@ export default function Sidebar({ mobile, onClose }: SidebarProps) {
         "flex items-center h-15 border-b border-white/7 shrink-0",
         collapsed ? "justify-center px-0" : "px-4 gap-3"
       )}>
-        <div className="w-8 h-8 bg-linear-to-br from-[#38bdf8] to-[#1d4ed8] rounded-xl flex items-center justify-center shrink-0 shadow-lg">
-          <HeartHandshake size={17} className="text-white" />
+        <div className="w-8 h-8 bg-linear-to-br from-[#38bdf8] to-[#1d4ed8] rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-[#38bdf8]/20">
+          <HeartHandshake size={17} className="text-white drop-shadow-sm" />
         </div>
         {!collapsed && (
           <div className="flex flex-col leading-none">
@@ -184,7 +184,7 @@ export default function Sidebar({ mobile, onClose }: SidebarProps) {
       </div>
 
       {/* User card */}
-      <div className="mx-2 mb-3 mt-2 rounded-xl bg-white/4 border border-white/7 overflow-hidden">
+      <div className="mx-2 mb-3 mt-2 rounded-xl bg-linear-to-b from-white/6 to-white/2 border border-white/7 overflow-hidden backdrop-blur-sm">
         <div className={cn(
           "flex items-center gap-2.5 p-2.5 cursor-pointer hover:bg-white/5 transition-colors",
           collapsed && "justify-center"

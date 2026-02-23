@@ -44,22 +44,25 @@ export function Modal({ open, onClose, title, description, children, size = "md"
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in" />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-fade-in" />
       <div
         className={cn(
-          "relative w-full bg-(--bg-surface) border border-(--border-color) rounded-2xl shadow-2xl animate-scale-in",
+          "relative w-full bg-(--bg-surface) border border-(--border-color) rounded-2xl shadow-2xl animate-scale-in overflow-hidden",
           sizeMap[size]
         )}
       >
         {/* Header */}
         <div className="flex items-start justify-between p-5 border-b border-(--border-color)">
           <div>
-            {title && <h2 className="font-display font-semibold text-lg text-(--text-primary)">{title}</h2>}
+            {title && <h2 className="font-display font-semibold text-lg text-(--text-primary) tracking-tight">{title}</h2>}
             {description && <p className="text-sm text-(--text-muted) mt-0.5">{description}</p>}
           </div>
-          <Button variant="ghost" size="xs" className="ml-4 -mt-0.5" onClick={onClose}>
-            <X size={16} />
-          </Button>
+          <button
+            onClick={onClose}
+            className="ml-4 -mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-muted) transition-all"
+          >
+            <X size={15} />
+          </button>
         </div>
 
         {/* Body */}
@@ -67,7 +70,7 @@ export function Modal({ open, onClose, title, description, children, size = "md"
 
         {/* Footer */}
         {footer && (
-          <div className="flex items-center justify-end gap-2 p-4 border-t border-(--border-color)">
+          <div className="flex items-center justify-end gap-2 p-4 border-t border-(--border-color) bg-(--bg-muted)/50">
             {footer}
           </div>
         )}

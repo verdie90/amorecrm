@@ -46,12 +46,12 @@ export default function ForgotPasswordPage() {
             Reset your<br />password
           </h1>
           <p className="text-white/70 text-base leading-relaxed max-w-sm">
-            Enter your work email address and we'll send you a secure link to reset your password.
+            Enter your work email address and we&apos;ll send you a secure link to reset your password.
           </p>
           <div className="mt-10 bg-white/10 rounded-2xl p-5">
             <p className="text-white/80 text-sm">
               For security, password reset links expire after <strong className="text-white">30 minutes</strong>. 
-              Make sure to check your spam folder if you don't receive the email.
+              Make sure to check your spam folder if you don&apos;t receive the email.
             </p>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function ForgotPasswordPage() {
               <div className="mb-7">
                 <h2 className="font-display text-2xl font-bold text-(--text-primary)">Forgot password?</h2>
                 <p className="text-sm text-(--text-muted) mt-1.5">
-                  No worries! Enter your email and we'll send you a reset link.
+                  No worries! Enter your email and we&apos;ll send you a reset link.
                 </p>
               </div>
 
@@ -111,7 +111,7 @@ export default function ForgotPasswordPage() {
                 className="w-full"
                 onClick={() => { setEmail(""); setSent(false); }}
               >
-                Didn't receive it? Try again
+                Didn&apos;t receive it? Try again
               </Button>
             </div>
           )}

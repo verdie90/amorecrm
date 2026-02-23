@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import {
-  CheckSquare, Plus, Search, Filter, MoreHorizontal,
-  Calendar, Flag, User, CheckCircle2, Circle, Clock
+  CheckSquare, Plus, Search, MoreHorizontal,
+  Calendar, CheckCircle2, Circle, Clock
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -60,7 +60,7 @@ export default function TasksPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-(--text-primary)">Tasks</h1>
+          <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Tasks</h1>
           <p className="text-sm text-(--text-muted) mt-0.5">{todoCount} pending · {inProgressCount} in progress · {doneCount} done</p>
         </div>
         <Button icon={<Plus size={15} />} onClick={() => setShowAddModal(true)}>
@@ -79,7 +79,7 @@ export default function TasksPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-(--text-muted)">{s.label}</p>
-                <p className="font-display text-2xl font-bold text-(--text-primary)">{s.count}</p>
+                <p className="font-display text-2xl font-bold text-(--text-primary) font-num">{s.count}</p>
               </div>
               <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${s.bg}`}>{s.count}</span>
             </div>
@@ -89,7 +89,7 @@ export default function TasksPage() {
 
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-        <div className="flex items-center gap-1 bg-(--bg-muted) rounded-xl p-1">
+        <div className="flex items-center gap-0.5 bg-(--bg-muted) rounded-xl p-1 border border-(--border-color)">
           {statusTabs.map((tab) => (
             <button
               key={tab.id}
@@ -130,7 +130,7 @@ export default function TasksPage() {
             return (
               <div
                 key={task.id}
-                className="bg-(--bg-surface) border border-(--border-color) rounded-xl px-4 py-3 flex items-start gap-3 hover:shadow-sm transition-all group"
+                className="bg-(--bg-surface) border border-(--border-color) rounded-xl px-4 py-3 flex items-start gap-3 hover:shadow-sm hover:border-(--border-strong) transition-all duration-200 group"
               >
                 {/* Checkbox */}
                 <button

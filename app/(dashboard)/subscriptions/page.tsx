@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import {
-  CreditCard, Check, Zap, Star, Shield, ArrowUpRight,
+  CreditCard, Star,
   Download, AlertCircle, CheckCircle2
 } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,8 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Modal } from "@/components/ui/modal";
 import { planConfigs, mockInvoices } from "@/lib/mock-data";
-import { formatCurrency, formatDate } from "@/lib/utils";
-import { cn } from "@/lib/utils";
+import { formatCurrency, formatDate, cn } from "@/lib/utils";
 
 const paymentMethods = [
   { id: "va_bca", label: "Virtual Account BCA", type: "virtual_account", icon: "🏦" },
@@ -35,13 +34,13 @@ export default function SubscriptionsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-(--text-primary)">Subscription & Billing</h1>
+          <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Subscription & Billing</h1>
           <p className="text-sm text-(--text-muted) mt-0.5">Manage your plan, billing, and payment methods</p>
         </div>
       </div>
 
       {/* Current Plan Banner */}
-      <div className="bg-gradient-to-r from-[#1e3a8a] to-[#1d4ed8] rounded-2xl p-5 text-white">
+      <div className="bg-linear-to-r from-[#1e3a8a] to-[#1d4ed8] rounded-2xl p-5 text-white">
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -122,7 +121,7 @@ export default function SubscriptionsPage() {
                 )}
                 {isEnterprise && !isCurrent && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge variant="accent" className="bg-gradient-to-r from-amber-400 to-orange-400 text-white border-0">
+                    <Badge variant="accent" className="bg-linear-to-r from-amber-400 to-orange-400 text-white border-0">
                       <Star size={10} /> Best Value
                     </Badge>
                   </div>
@@ -141,7 +140,7 @@ export default function SubscriptionsPage() {
                 <div className="space-y-2 mb-5">
                   {plan.features.map((f) => (
                     <div key={f} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 size={14} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 size={14} className="text-emerald-500 shrink-0 mt-0.5" />
                       <span className="text-(--text-secondary)">{f}</span>
                     </div>
                   ))}

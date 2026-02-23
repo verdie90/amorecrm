@@ -20,9 +20,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {label}
           </label>
         )}
-        <div className="relative">
+        <div className="relative group">
           {leftIcon && (
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-(--text-muted)">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-(--text-muted) group-focus-within:text-[#1e3a8a] transition-colors">
               {leftIcon}
             </span>
           )}
@@ -30,9 +30,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             ref={ref}
             className={cn(
-              "w-full h-9 text-sm bg-(--bg-surface) text-(--text-primary) border border-(--border-color) rounded-lg px-3 placeholder:text-(--text-muted) transition-all",
-              "focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 focus:border-[#1e3a8a]",
-              error && "border-red-500 focus:ring-red-500/30 focus:border-red-500",
+              "w-full h-9 text-sm bg-(--bg-surface) text-(--text-primary) border border-(--border-color) rounded-xl px-3 placeholder:text-(--text-muted) transition-all duration-200",
+              "hover:border-(--border-strong)",
+              "focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/20 focus:border-[#1e3a8a]/50 focus:bg-(--bg-surface) focus:shadow-sm",
+              error && "border-red-400 focus:ring-red-500/20 focus:border-red-500 hover:border-red-400",
               leftIcon && "pl-9",
               rightIcon && "pr-9",
               className
@@ -45,8 +46,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             </span>
           )}
         </div>
-        {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
-        {hint && !error && <p className="mt-1 text-xs text-(--text-muted)">{hint}</p>}
+        {error && <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">{error}</p>}
+        {hint && !error && <p className="mt-1.5 text-xs text-(--text-muted)">{hint}</p>}
       </div>
     );
   }

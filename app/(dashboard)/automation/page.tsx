@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import {
-  Zap, Plus, Play, Pause, Trash2, Edit, MoreHorizontal,
+  Zap, Plus, Play, Pause, Trash2, Edit,
   ArrowRight, Clock, Mail, MessageSquare, Bell, Tag, Users
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -67,7 +67,7 @@ const automations = [
   },
 ];
 
-const categoryColors: Record<string, string> = {
+const categoryColors: Record<string, "info" | "warning" | "success" | "purple"> = {
   onboarding: "info",
   billing: "warning",
   sales: "success",
@@ -99,7 +99,7 @@ export default function AutomationPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-(--text-primary)">Workflow Automation</h1>
+          <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Workflow Automation</h1>
           <p className="text-sm text-(--text-muted) mt-0.5">
             {automationList.filter(a => a.status === "active").length} active automations running
           </p>
@@ -135,11 +135,11 @@ export default function AutomationPage() {
       {/* Automation list */}
       <div className="space-y-3">
         {automationList.map((auto) => (
-          <Card key={auto.id} padding="md" className="hover:shadow-sm transition-all">
+          <Card key={auto.id} padding="md" className="hover:shadow-sm hover:border-(--border-strong) transition-all duration-200 group">
             <div className="flex items-start gap-4">
               {/* Status indicator */}
               <div className={cn(
-                "mt-0.5 w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0",
+                "mt-0.5 w-9 h-9 rounded-xl flex items-center justify-center shrink-0",
                 auto.status === "active" ? "bg-emerald-50 text-emerald-600" : "bg-(--bg-muted) text-(--text-muted)"
               )}>
                 <Zap size={18} />
@@ -151,14 +151,14 @@ export default function AutomationPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-display font-semibold text-sm text-(--text-primary)">{auto.name}</h3>
-                      <Badge variant={categoryColors[auto.category] as any} size="sm">{auto.category}</Badge>
+                      <Badge variant={categoryColors[auto.category]} size="sm">{auto.category}</Badge>
                       <Badge variant={auto.status === "active" ? "success" : "warning"} size="sm" dot>
                         {auto.status}
                       </Badge>
                     </div>
                     <p className="text-xs text-(--text-muted) mt-0.5">{auto.description}</p>
                   </div>
-                  <div className="flex items-center gap-1 flex-shrink-0">
+                  <div className="flex items-center gap-1 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity">
                     <Button
                       variant="ghost"
                       size="xs"
@@ -190,7 +190,7 @@ export default function AutomationPage() {
 
                 {/* Stats */}
                 <div className="flex items-center gap-4 mt-3 text-xs text-(--text-muted)">
-                  <span><strong className="text-(--text-secondary)">{auto.runs}</strong> runs</span>
+                  <span><strong className="text-(--text-secondary) font-num">{auto.runs}</strong> runs</span>
                   <span>Last run: {auto.lastRun}</span>
                 </div>
               </div>

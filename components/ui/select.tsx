@@ -34,7 +34,7 @@ export function Select({ options, value, onChange, placeholder = "Select...", la
   }, []);
 
   return (
-    <div className={cn("w-full", className)} ref={ref}>
+    <div className={cn("w-full relative", className)} ref={ref}>
       {label && <label className="block text-sm font-medium text-(--text-primary) mb-1.5">{label}</label>}
       <button
         type="button"

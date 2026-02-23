@@ -1,6 +1,6 @@
 "use client";
 import {
-  BarChart3, Download, Filter, TrendingUp, Users, MessageSquare,
+  Download, Filter, MessageSquare,
   Star, ArrowUpRight, Clock, Target
 } from "lucide-react";
 import {
@@ -45,7 +45,7 @@ export default function ReportsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-(--text-primary)">Reports & Analytics</h1>
+          <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Reports & Analytics</h1>
           <p className="text-sm text-(--text-muted) mt-0.5">Overview of your team and business performance</p>
         </div>
         <div className="flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function ReportsPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-xs text-(--text-muted) border-b border-(--border-color)">
+              <tr className="text-xs text-(--text-muted) border-b border-(--border-color) bg-(--bg-muted)/50">
                 <th className="text-left pb-3 font-medium">Agent</th>
                 <th className="text-center pb-3 font-medium">Resolved</th>
                 <th className="text-center pb-3 font-medium">Avg Time</th>
@@ -129,7 +129,7 @@ export default function ReportsPage() {
               {agentPerformance.map((agent, idx) => {
                 const score = ((agent.resolved / 52) * 40 + (agent.csat / 5) * 40 + (agent.deals / 15) * 20).toFixed(0);
                 return (
-                  <tr key={agent.name} className="hover:bg-(--bg-muted) transition-colors">
+                  <tr key={agent.name} className="hover:bg-(--bg-muted)/60 transition-colors group">
                     <td className="py-3">
                       <div className="flex items-center gap-2.5">
                         <div className="w-6 h-6 rounded-full bg-[#1e3a8a] text-white text-[10px] font-bold flex items-center justify-center">
@@ -139,7 +139,7 @@ export default function ReportsPage() {
                       </div>
                     </td>
                     <td className="py-3 text-center">
-                      <span className="font-semibold text-(--text-primary) text-xs">{agent.resolved}</span>
+                      <span className="font-semibold text-(--text-primary) text-xs font-num">{agent.resolved}</span>
                     </td>
                     <td className="py-3 text-center">
                       <span className="text-xs text-(--text-secondary)">{agent.avgTime}</span>
@@ -147,7 +147,7 @@ export default function ReportsPage() {
                     <td className="py-3 text-center">
                       <div className="flex items-center justify-center gap-1">
                         <Star size={11} className="text-amber-400 fill-amber-400" />
-                        <span className="font-semibold text-xs text-(--text-primary)">{agent.csat}</span>
+                        <span className="font-semibold text-xs text-(--text-primary) font-num">{agent.csat}</span>
                       </div>
                     </td>
                     <td className="py-3 text-center">

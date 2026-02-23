@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import {
   MessageSquare, Search, Send, Paperclip, Smile, Phone,
-  Video, MoreHorizontal, Filter, CheckCheck, Clock,
+  Video, MoreHorizontal, CheckCheck, Clock,
   Instagram, Mail, Globe, Zap, Bot, Users, ArrowRight
 } from "lucide-react";
 import { Avatar } from "@/components/ui/badge";
@@ -80,7 +80,7 @@ export default function InboxPage() {
     <div className="h-[calc(100vh-3.5rem)] flex flex-col">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h1 className="font-display text-2xl font-bold text-(--text-primary)">Inbox</h1>
+          <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Inbox</h1>
           <p className="text-sm text-(--text-muted) mt-0.5">Manage all conversations in one place</p>
         </div>
         <div className="flex gap-2">
@@ -91,7 +91,7 @@ export default function InboxPage() {
 
       <div className="flex flex-1 gap-4 overflow-hidden min-h-0">
         {/* Conversation List */}
-        <div className="w-80 flex-shrink-0 bg-(--bg-surface) border border-(--border-color) rounded-2xl flex flex-col overflow-hidden">
+        <div className="w-80 shrink-0 bg-(--bg-surface) border border-(--border-color) rounded-2xl flex flex-col overflow-hidden">
           {/* Search */}
           <div className="p-3 border-b border-(--border-color)">
             <Input placeholder="Search conversations..." leftIcon={<Search size={14} />} />
@@ -104,7 +104,7 @@ export default function InboxPage() {
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id)}
                 className={cn(
-                  "flex-shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all",
+                  "shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all",
                   activeFilter === tab.id
                     ? "bg-[#1e3a8a] text-white"
                     : "text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-muted)"
@@ -145,7 +145,7 @@ export default function InboxPage() {
                       <p className={cn("text-xs font-semibold text-(--text-primary) truncate", conv.unreadCount > 0 && "font-bold")}>
                         {conv.contactName}
                       </p>
-                      <span className="text-[10px] text-(--text-muted) flex-shrink-0 ml-1">
+                      <span className="text-[10px] text-(--text-muted) shrink-0 ml-1">
                         {formatDate(conv.lastMessageAt, "relative")}
                       </span>
                     </div>
@@ -200,7 +200,7 @@ export default function InboxPage() {
                   return (
                     <div key={msg.id} className={cn("flex gap-2", isAgent ? "justify-end" : "justify-start")}>
                       {!isAgent && <Avatar name={selectedConv.contactName} size="xs" />}
-                      <div className={cn("max-w-[66%] space-y-1")}>
+                      <div className={cn("max-w-2/3 space-y-1")}>
                         {!isAgent && (
                           <p className="text-[10px] text-(--text-muted) px-1">{selectedConv.contactName}</p>
                         )}
@@ -230,7 +230,7 @@ export default function InboxPage() {
               {aiSuggestion && (
                 <div className="border-t border-(--border-color) px-4 py-2 bg-[#1e3a8a]/3">
                   <div className="flex items-start gap-2">
-                    <span className="text-[10px] font-semibold text-[#1e3a8a] bg-[#1e3a8a]/10 px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5">AI</span>
+                    <span className="text-[10px] font-semibold text-[#1e3a8a] bg-[#1e3a8a]/10 px-2 py-0.5 rounded-full shrink-0 mt-0.5">AI</span>
                     <p className="text-xs text-(--text-secondary) flex-1 line-clamp-2">{aiSuggestion}</p>
                     <Button variant="ghost" size="xs" onClick={() => setMessage(aiSuggestion)}>
                       Use <ArrowRight size={10} />
@@ -243,16 +243,16 @@ export default function InboxPage() {
               <div className="p-3 border-t border-(--border-color)">
                 <div className="flex items-end gap-2">
                   <div className="flex-1 bg-(--bg-muted) rounded-xl border border-(--border-color) px-3 py-2.5 flex items-end gap-2">
-                    <Button variant="ghost" size="xs" className="flex-shrink-0"><Paperclip size={14} /></Button>
+                    <Button variant="ghost" size="xs" className="shrink-0"><Paperclip size={14} /></Button>
                     <textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
                       placeholder="Type a message... (Enter to send)"
-                      className="flex-1 bg-transparent text-sm text-(--text-primary) placeholder:text-(--text-muted) resize-none focus:outline-none max-h-32 min-h-[20px]"
+                      className="flex-1 bg-transparent text-sm text-(--text-primary) placeholder:text-(--text-muted) resize-none focus:outline-none max-h-32 min-h-5"
                       rows={1}
                     />
-                    <Button variant="ghost" size="xs" className="flex-shrink-0"><Smile size={14} /></Button>
+                    <Button variant="ghost" size="xs" className="shrink-0"><Smile size={14} /></Button>
                   </div>
                   <Button
                     size="md"
@@ -276,7 +276,7 @@ export default function InboxPage() {
         </div>
 
         {/* Contact sidebar - hidden on smaller screens */}
-        <div className="hidden xl:flex w-64 flex-shrink-0 bg-(--bg-surface) border border-(--border-color) rounded-2xl flex-col p-4 gap-4">
+        <div className="hidden xl:flex w-64 shrink-0 bg-(--bg-surface) border border-(--border-color) rounded-2xl flex-col p-4 gap-4">
           {selectedConv && (
             <>
               <div className="text-center">

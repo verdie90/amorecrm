@@ -55,11 +55,12 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex bg-(--bg-base)">
       {/* Left panel - Branding */}
-      <div className="hidden lg:flex lg:w-[44%] bg-linear-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#0ea5e9] flex-col justify-between p-12 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-[44%] bg-linear-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#0ea5e9] flex-col justify-between p-12 relative overflow-hidden animate-gradient" style={{ backgroundSize: "200% 200%" }}>
         {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/4 -left-20 w-80 h-80 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#38bdf8] rounded-full blur-3xl" />
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 -left-20 w-80 h-80 bg-white rounded-full blur-3xl opacity-10" />
+          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#38bdf8] rounded-full blur-3xl opacity-10" />
+          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-white rounded-full blur-3xl opacity-5" />
         </div>
 
         <div className="relative z-10">
@@ -93,10 +94,10 @@ export default function LoginPage() {
         </div>
 
         <div className="relative z-10">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 bg-white/10 rounded-2xl px-5 py-4 backdrop-blur-sm border border-white/10">
             <div className="flex -space-x-2">
               {["Ahmad", "Sarah", "Citra", "Budi"].map((n) => (
-                <div key={n} className="w-8 h-8 rounded-full bg-white/30 border-2 border-white/50 flex items-center justify-center text-white text-xs font-bold">
+                <div key={n} className="w-8 h-8 rounded-full bg-white/30 border-2 border-white/50 flex items-center justify-center text-white text-xs font-bold shadow-sm">
                   {n[0]}
                 </div>
               ))}
@@ -120,7 +121,7 @@ export default function LoginPage() {
           </div>
 
           <div className="mb-7">
-            <h2 className="font-display text-2xl font-bold text-(--text-primary)">Welcome back</h2>
+            <h2 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Welcome back</h2>
             <p className="text-sm text-(--text-muted) mt-1.5">Sign in to your workspace</p>
           </div>
 
@@ -150,7 +151,8 @@ export default function LoginPage() {
             />
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-xs text-red-600">
+              <div className="bg-red-50 border border-red-200/60 rounded-xl px-3 py-2.5 text-xs text-red-600 flex items-center gap-2 animate-slide-down">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
                 {error}
               </div>
             )}
@@ -189,7 +191,7 @@ export default function LoginPage() {
           </div>
 
           <p className="text-center text-xs text-(--text-muted) mt-6">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/register" className="text-[#1e3a8a] font-medium hover:underline">
               Start free trial
             </Link>

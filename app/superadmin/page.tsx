@@ -1,8 +1,8 @@
 "use client";
 import {
-  Shield, Building2, Users, CreditCard, Activity, TrendingUp,
-  AlertCircle, CheckCircle2, Clock, MoreHorizontal, Search,
-  DollarSign, Globe, Zap, Ban, Edit, Eye
+  Shield, Building2, Users, Activity,
+  CheckCircle2, Search,
+  DollarSign, Globe, Ban, Edit, Eye
 } from "lucide-react";
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import {
   Shield, LayoutDashboard, Building2, CreditCard,
-  BarChart3, Settings, LogOut, HeartHandshake, Activity
+  BarChart3, Settings, HeartHandshake, Activity
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppStore } from "@/lib/store";
@@ -29,7 +29,7 @@ export default function SuperadminLayout({ children }: { children: React.ReactNo
   return (
     <div className="flex h-screen overflow-hidden bg-(--bg-base)">
       {/* Sidebar */}
-      <aside className="w-56 flex-shrink-0 flex flex-col h-screen bg-[#0f172a]">
+      <aside className="w-56 shrink-0 flex flex-col h-screen bg-[#0f172a]">
         <div className="flex items-center gap-3 px-4 py-5 border-b border-white/10">
           <div className="w-8 h-8 bg-red-500 rounded-xl flex items-center justify-center">
             <Shield size={18} className="text-white" />
@@ -77,7 +77,7 @@ export default function SuperadminLayout({ children }: { children: React.ReactNo
             <span className="text-sm font-semibold text-(--text-primary)">Superadmin Panel</span>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <span className="text-xs text-(--text-muted) bg-red-50 text-red-600 px-2 py-1 rounded-full font-medium">
+            <span className="text-xs bg-red-50 text-red-600 px-2 py-1 rounded-full font-medium">
               Restricted Access
             </span>
           </div>

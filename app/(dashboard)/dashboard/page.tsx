@@ -54,10 +54,10 @@ interface TooltipPayloadItem {
 function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: TooltipPayloadItem[]; label?: string }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-(--bg-surface) border border-(--border-color) rounded-xl shadow-xl p-3">
-      <p className="text-xs text-(--text-muted) mb-1">{label}</p>
+    <div className="bg-(--bg-surface) border border-(--border-color) rounded-xl shadow-xl p-3 backdrop-blur-lg">
+      <p className="text-[11px] text-(--text-muted) mb-1.5 font-medium">{label}</p>
       {payload.map((p) => (
-        <p key={p.name} className="text-sm font-semibold text-(--text-primary)">
+        <p key={p.name} className="text-sm font-bold text-(--text-primary) font-num">
           {formatCurrency(p.value)}
         </p>
       ))}
@@ -71,20 +71,22 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Welcome banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#1e3a8a] to-[#1d4ed8] px-6 py-5 flex items-center justify-between shadow-lg">
+      <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] px-6 py-6 flex items-center justify-between shadow-lg animate-gradient" style={{ backgroundSize: "200% 200%" }}>
         {/* Background blobs */}
-        <div className="absolute right-0 top-0 w-48 h-full opacity-10 pointer-events-none">
-          <div className="absolute right-8 top-3 w-32 h-32 bg-[#38bdf8] rounded-full blur-3xl" />
-          <div className="absolute right-20 bottom-2 w-20 h-20 bg-white rounded-full blur-2xl" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute right-8 top-3 w-36 h-36 bg-[#38bdf8] rounded-full blur-3xl opacity-15" />
+          <div className="absolute right-24 bottom-2 w-24 h-24 bg-white rounded-full blur-2xl opacity-10" />
+          <div className="absolute left-1/3 top-0 w-48 h-24 bg-white rounded-full blur-3xl opacity-5" />
         </div>
-        <div>
-          <p className="text-[#38bdf8] text-xs font-semibold uppercase tracking-widest mb-1">
-            Welcome back 👋
+        <div className="relative z-10">
+          <p className="text-[#38bdf8] text-xs font-semibold uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse-dot" />
+            Welcome back
           </p>
           <h1 className="font-display text-2xl font-bold text-white tracking-tight">
             Good morning, John
           </h1>
-          <p className="text-white/60 text-sm mt-1">
+          <p className="text-white/60 text-sm mt-1.5 max-w-md">
             Here&apos;s what&apos;s happening with your business today.
           </p>
         </div>
@@ -95,7 +97,7 @@ export default function DashboardPage() {
           <Button
             size="sm"
             icon={<Zap size={14} />}
-            className="bg-white text-[#1e3a8a] hover:bg-white/90 border-transparent"
+            className="bg-white text-[#1e3a8a] hover:bg-white/90 border-transparent shadow-md"
           >
             Quick Action
           </Button>
@@ -177,7 +179,7 @@ export default function DashboardPage() {
       {/* Charts row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Revenue chart */}
-        <Card className="lg:col-span-2" padding="md">
+        <Card className="lg:col-span-2" padding="md" glow>
           <CardHeader>
             <CardTitle>Revenue Overview</CardTitle>
             <div className="flex items-center gap-2">
@@ -339,18 +341,18 @@ export default function DashboardPage() {
       {/* Recent Deals & Contacts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Recent Deals */}
-        <Card padding="md">
+        <Card padding="md" glow>
           <CardHeader>
             <CardTitle>Recent Deals</CardTitle>
             <Button variant="ghost" size="xs">View All</Button>
           </CardHeader>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm table-row-hover">
               <thead>
                 <tr className="text-xs text-(--text-muted) border-b border-(--border-color)">
-                  <th className="text-left pb-2 font-medium">Deal</th>
-                  <th className="text-left pb-2 font-medium">Stage</th>
-                  <th className="text-right pb-2 font-medium">Value</th>
+                  <th className="text-left pb-2.5 font-medium">Deal</th>
+                  <th className="text-left pb-2.5 font-medium">Stage</th>
+                  <th className="text-right pb-2.5 font-medium">Value</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-(--border-color)">
@@ -368,7 +370,7 @@ export default function DashboardPage() {
                         <Badge variant={stage.variant} size="sm">{stage.label}</Badge>
                       </td>
                       <td className="py-2.5 text-right">
-                        <span className="font-semibold text-xs text-(--text-primary)">
+                        <span className="font-semibold text-xs text-(--text-primary) font-num">
                           {formatCurrency(deal.value)}
                         </span>
                       </td>

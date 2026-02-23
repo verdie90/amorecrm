@@ -5,17 +5,19 @@ interface CardProps {
   children: React.ReactNode;
   padding?: "none" | "sm" | "md" | "lg";
   hover?: boolean;
+  glow?: boolean;
 }
 
-export function Card({ className, children, padding = "md", hover = false }: CardProps) {
+export function Card({ className, children, padding = "md", hover = false, glow = false }: CardProps) {
   return (
     <div
       className={cn(
-        "bg-(--bg-surface) border border-(--border-color) rounded-2xl shadow-xs",
+        "bg-(--bg-surface) border border-(--border-color) rounded-2xl shadow-xs transition-all duration-200",
         padding === "sm" && "p-4",
         padding === "md" && "p-5",
         padding === "lg" && "p-6",
-        hover && "hover:shadow-md hover:border-[#1e3a8a]/20 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer",
+        hover && "hover:shadow-md hover:border-(--border-strong) hover:-translate-y-0.5 cursor-pointer",
+        glow && "card-glow",
         className
       )}
     >
@@ -29,7 +31,7 @@ export function CardHeader({ className, children }: { className?: string; childr
 }
 
 export function CardTitle({ className, children }: { className?: string; children: React.ReactNode }) {
-  return <h3 className={cn("font-display font-semibold text-(--text-primary)", className)}>{children}</h3>;
+  return <h3 className={cn("font-display font-semibold text-(--text-primary) tracking-tight", className)}>{children}</h3>;
 }
 
 export function CardContent({ className, children }: { className?: string; children: React.ReactNode }) {

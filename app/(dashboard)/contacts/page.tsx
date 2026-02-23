@@ -48,7 +48,7 @@ export default function ContactsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-(--text-primary)">Contacts</h1>
+          <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Contacts</h1>
           <p className="text-sm text-(--text-muted) mt-0.5">{mockContacts.length.toLocaleString()} total records</p>
         </div>
         <Button icon={<Plus size={15} />} onClick={() => setShowAddModal(true)}>
@@ -58,15 +58,15 @@ export default function ContactsPage() {
 
       {/* Tabs + Search + Filter */}
       <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-        <div className="flex items-center gap-1 bg-(--bg-muted) rounded-xl p-1">
+        <div className="flex items-center gap-0.5 bg-(--bg-muted) rounded-xl p-1 border border-(--border-color)">
           {filterTabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
                 activeTab === tab
-                  ? "bg-(--bg-surface) text-(--text-primary) shadow-sm"
-                  : "text-(--text-muted) hover:text-(--text-primary)"
+                  ? "bg-(--bg-surface) text-(--text-primary) shadow-sm ring-1 ring-(--border-color)"
+                  : "text-(--text-muted) hover:text-(--text-secondary)"
               }`}
             >
               {tab}
@@ -100,7 +100,7 @@ export default function ContactsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-(--bg-muted) text-xs text-(--text-muted) border-b border-(--border-color)">
+                <tr className="bg-(--bg-muted)/50 text-xs text-(--text-muted) border-b border-(--border-color)">
                   <th className="text-left px-4 py-3 font-medium">Contact</th>
                   <th className="text-left px-4 py-3 font-medium hidden sm:table-cell">Company</th>
                   <th className="text-left px-4 py-3 font-medium hidden md:table-cell">Type</th>
@@ -114,7 +114,7 @@ export default function ContactsPage() {
                 {filtered.map((contact) => (
                   <tr
                     key={contact.id}
-                    className="hover:bg-(--bg-muted) transition-colors cursor-pointer"
+                    className="hover:bg-(--bg-muted)/60 transition-colors cursor-pointer group"
                     onClick={() => setSelectedContact(contact)}
                   >
                     <td className="px-4 py-3">
@@ -156,8 +156,8 @@ export default function ContactsPage() {
                       </div>
                     </td>
                     <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex items-center gap-1">
-                        <Button variant="ghost" size="xs" className="opacity-0 group-hover:opacity-100">
+                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Button variant="ghost" size="xs">
                           <Mail size={13} />
                         </Button>
                         <Button variant="ghost" size="xs">

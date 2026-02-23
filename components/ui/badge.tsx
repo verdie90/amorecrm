@@ -11,14 +11,14 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  default: "bg-[#1e3a8a]/10 text-[#1e3a8a]",
-  success: "bg-emerald-100 text-emerald-700",
-  warning: "bg-amber-100 text-amber-700",
-  danger: "bg-red-100 text-red-700",
-  info: "bg-sky-100 text-sky-700",
-  muted: "bg-(--bg-muted) text-(--text-muted)",
-  purple: "bg-purple-100 text-purple-700",
-  accent: "bg-amber-100 text-amber-700",
+  default: "bg-[#1e3a8a]/8 text-[#1e3a8a] ring-1 ring-[#1e3a8a]/10",
+  success: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200/60",
+  warning: "bg-amber-50 text-amber-700 ring-1 ring-amber-200/60",
+  danger: "bg-red-50 text-red-700 ring-1 ring-red-200/60",
+  info: "bg-sky-50 text-sky-700 ring-1 ring-sky-200/60",
+  muted: "bg-(--bg-muted) text-(--text-muted) ring-1 ring-(--border-color)",
+  purple: "bg-purple-50 text-purple-700 ring-1 ring-purple-200/60",
+  accent: "bg-amber-50 text-amber-700 ring-1 ring-amber-200/60",
 };
 
 const dotColors: Record<BadgeVariant, string> = {
@@ -82,7 +82,7 @@ export function Avatar({ name = "", src, size = "md", online, className }: Avata
     <div className={cn("relative shrink-0", className)}>
       <div
         className={cn(
-          "rounded-full flex items-center justify-center text-white font-semibold overflow-hidden",
+          "rounded-full flex items-center justify-center text-white font-semibold overflow-hidden ring-2 ring-transparent",
           sizeMap[size],
           !src && bg
         )}
@@ -90,15 +90,15 @@ export function Avatar({ name = "", src, size = "md", online, className }: Avata
         {src ? (
           <img src={src} alt={name} className="w-full h-full object-cover" />
         ) : (
-          <span>{getInitials(name || "?")}</span>
+          <span className="drop-shadow-sm">{getInitials(name || "?")}</span>
         )}
       </div>
       {online !== undefined && (
         <span
           className={cn(
-            "absolute bottom-0 right-0 block rounded-full ring-2 ring-(--bg-surface)",
+            "absolute bottom-0 right-0 block rounded-full ring-2 ring-(--bg-surface) transition-colors",
             size === "xs" || size === "sm" ? "w-2 h-2" : "w-2.5 h-2.5",
-            online ? "bg-emerald-500" : "bg-slate-400"
+            online ? "bg-emerald-400 animate-pulse-dot" : "bg-slate-400"
           )}
         />
       )}

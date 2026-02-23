@@ -75,10 +75,10 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex bg-(--bg-base)">
       {/* Left */}
-      <div className="hidden lg:flex lg:w-[44%] bg-gradient-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#0ea5e9] flex-col justify-between p-12 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/4 -left-20 w-80 h-80 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#38bdf8] rounded-full blur-3xl" />
+      <div className="hidden lg:flex lg:w-[44%] bg-linear-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#0ea5e9] flex-col justify-between p-12 relative overflow-hidden animate-gradient" style={{ backgroundSize: "200% 200%" }}>
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 -left-20 w-80 h-80 bg-white rounded-full blur-3xl opacity-10" />
+          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#38bdf8] rounded-full blur-3xl opacity-10" />
         </div>
 
         <div className="relative z-10">
@@ -127,7 +127,7 @@ export default function RegisterPage() {
 
       {/* Right */}
       <div className="flex-1 flex items-center justify-center p-6">
-        <div className="w-full max-w-[420px]">
+        <div className="w-full max-w-105">
           <div className="flex items-center gap-2 mb-8 lg:hidden">
             <div className="w-8 h-8 bg-[#1e3a8a] rounded-xl flex items-center justify-center">
               <HeartHandshake size={18} className="text-white" />

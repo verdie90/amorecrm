@@ -52,20 +52,20 @@ export default function DealsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-(--text-primary)">Deals</h1>
+          <h1 className="font-display text-2xl font-bold text-(--text-primary) tracking-tight">Deals</h1>
           <p className="text-sm text-(--text-muted) mt-0.5">{mockDeals.length} total deals</p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 bg-(--bg-muted) rounded-lg p-0.5">
+          <div className="flex items-center gap-0.5 bg-(--bg-muted) rounded-lg p-0.5 border border-(--border-color)">
             <button
               onClick={() => setViewMode("kanban")}
-              className={`p-1.5 rounded-md transition-all ${viewMode === "kanban" ? "bg-(--bg-surface) shadow-sm text-(--text-primary)" : "text-(--text-muted)"}`}
+              className={`p-1.5 rounded-md transition-all duration-200 ${viewMode === "kanban" ? "bg-(--bg-surface) shadow-sm text-(--text-primary) ring-1 ring-(--border-color)" : "text-(--text-muted) hover:text-(--text-secondary)"}`}
             >
               <LayoutGrid size={15} />
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`p-1.5 rounded-md transition-all ${viewMode === "list" ? "bg-(--bg-surface) shadow-sm text-(--text-primary)" : "text-(--text-muted)"}`}
+              className={`p-1.5 rounded-md transition-all duration-200 ${viewMode === "list" ? "bg-(--bg-surface) shadow-sm text-(--text-primary) ring-1 ring-(--border-color)" : "text-(--text-muted) hover:text-(--text-secondary)"}`}
             >
               <List size={15} />
             </button>
@@ -120,11 +120,11 @@ export default function DealsPage() {
                     <div
                       key={deal.id}
                       onClick={() => setSelectedDeal(deal)}
-                      className="bg-(--bg-surface) border border-(--border-color) rounded-xl p-3.5 cursor-pointer hover:shadow-md hover:border-[#1e3a8a]/20 transition-all"
+                      className="bg-(--bg-surface) border border-(--border-color) rounded-xl p-3.5 cursor-pointer hover:shadow-md hover:border-(--border-strong) hover:-translate-y-0.5 transition-all duration-200 group"
                     >
                       <div className="flex items-start justify-between mb-2">
                         <p className="text-xs font-semibold text-(--text-primary) leading-snug flex-1 pr-2">{deal.title}</p>
-                        <Button variant="ghost" size="xs" className="opacity-0 hover:opacity-100 -mt-0.5 -mr-0.5" onClick={(e) => e.stopPropagation()}>
+                        <Button variant="ghost" size="xs" className="opacity-0 group-hover:opacity-100 -mt-0.5 -mr-0.5 transition-opacity" onClick={(e) => e.stopPropagation()}>
                           <MoreHorizontal size={12} />
                         </Button>
                       </div>
@@ -133,12 +133,12 @@ export default function DealsPage() {
                         <span className="text-[11px] text-(--text-muted)">{deal.contactName}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-(--text-primary)">{formatCurrency(deal.value)}</span>
-                        <span className="text-[10px] text-(--text-muted)">{deal.probability}% win</span>
+                        <span className="text-xs font-bold text-(--text-primary) font-num">{formatCurrency(deal.value)}</span>
+                        <span className="text-[10px] text-(--text-muted) font-medium">{deal.probability}%</span>
                       </div>
                       <div className="mt-2 h-1 bg-(--bg-muted) rounded-full overflow-hidden">
                         <div
-                          className="h-full rounded-full"
+                          className="h-full rounded-full transition-all duration-500"
                           style={{ width: `${deal.probability}%`, background: stage.color }}
                         />
                       </div>
@@ -165,7 +165,7 @@ export default function DealsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-(--bg-muted) text-xs text-(--text-muted) border-b border-(--border-color)">
+                <tr className="bg-(--bg-muted)/50 text-xs text-(--text-muted) border-b border-(--border-color)">
                   <th className="text-left px-4 py-3 font-medium">Deal</th>
                   <th className="text-left px-4 py-3 font-medium">Contact</th>
                   <th className="text-left px-4 py-3 font-medium">Stage</th>
@@ -179,7 +179,7 @@ export default function DealsPage() {
                 {filtered.map((deal) => (
                   <tr
                     key={deal.id}
-                    className="hover:bg-(--bg-muted) cursor-pointer"
+                    className="hover:bg-(--bg-muted)/60 cursor-pointer group transition-colors"
                     onClick={() => setSelectedDeal(deal)}
                   >
                     <td className="px-4 py-3">
